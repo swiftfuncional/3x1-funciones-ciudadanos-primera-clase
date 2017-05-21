@@ -30,3 +30,7 @@ func data(from url: URL, type: Int) -> [String: AnyObject] {
 		return [:]
 	}
 }
+
+let url = URL(string: "http://swiftfuncional.com/exercises/posts/1")!
+
+data(from: url, type: 1)
