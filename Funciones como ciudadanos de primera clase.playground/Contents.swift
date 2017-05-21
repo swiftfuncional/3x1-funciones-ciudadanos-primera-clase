@@ -24,4 +24,6 @@ func data(from url: URL, parser: (String) -> [String: AnyObject]) -> [String: An
 
 let url = URL(string: "http://swiftfuncional.com/exercises/posts/1")!
 
-data(from: url, parser: parseAsJSON)
+let parser = parseAsJSON
+
+data(from: url, parser: parser)
