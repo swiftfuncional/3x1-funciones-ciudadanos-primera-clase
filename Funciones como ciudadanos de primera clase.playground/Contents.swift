@@ -1,5 +1,6 @@
 import Foundation
 
+// (String) -> [String: AnyObject]
 func parse(_ response: String) -> [String: AnyObject] {
 	let data = response.data(using: .utf8)!
 
