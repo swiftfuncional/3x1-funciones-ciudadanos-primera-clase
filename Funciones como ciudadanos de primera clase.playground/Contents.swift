@@ -15,6 +15,28 @@ func parseAsHTML(_ response: String) -> [String: AnyObject] {
 	return [:]
 }
 
+protocol Parser {
+	func parse(_ response: String) -> [String: AnyObject]
+}
+
+class JSONParser: Parser {
+	func parse(_ response: String) -> [String: AnyObject] {
+		return parseAsJSON(response)
+	}
+}
+
+class XMLParser: Parser {
+	func parse(_ response: String) -> [String: AnyObject] {
+		return parseAsXML(response)
+	}
+}
+
+class HTMLParser: Parser {
+	func parse(_ response: String) -> [String: AnyObject] {
+		return parseAsHTML(response)
+	}
+}
+
 func data(from url: URL, type: Int) -> [String: AnyObject] {
 	let data = NSData(contentsOf: url)! as Data
 	let content = String(data: data, encoding: .utf8)!
