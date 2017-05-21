@@ -15,9 +15,18 @@ func parseAsHTML(_ response: String) -> [String: AnyObject] {
 	return [:]
 }
 
-parseAsJSON("{\"data\": 42}")
-
-func data(from url: URL) -> [String: AnyObject] {
+func data(from url: URL, type: Int) -> [String: AnyObject] {
 	let data = NSData(contentsOf: url)! as Data
-	let content = String(data: data, encoding: .utf8)
+	let content = String(data: data, encoding: .utf8)!
+
+	switch type {
+	case 1:
+		return parseAsJSON(content)
+	case 2:
+		return parseAsXML(content)
+	case 3:
+		return parseAsHTML(content)
+	default:
+		return [:]
+	}
 }
