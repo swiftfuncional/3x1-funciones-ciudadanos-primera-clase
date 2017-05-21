@@ -5,3 +5,5 @@ func parse(_ response: String) -> [String: AnyObject] {
 
 	return try! JSONSerialization.jsonObject(with: data) as! [String: AnyObject]
 }
+
+parse("{\"data\": 42}")
