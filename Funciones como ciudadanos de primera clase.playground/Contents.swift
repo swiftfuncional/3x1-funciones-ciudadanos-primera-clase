@@ -37,22 +37,13 @@ class HTMLParser: Parser {
 	}
 }
 
-func data(from url: URL, type: Int) -> [String: AnyObject] {
+func data(from url: URL, parser: Parser) -> [String: AnyObject] {
 	let data = NSData(contentsOf: url)! as Data
 	let content = String(data: data, encoding: .utf8)!
 
-	switch type {
-	case 1:
-		return parseAsJSON(content)
-	case 2:
-		return parseAsXML(content)
-	case 3:
-		return parseAsHTML(content)
-	default:
-		return [:]
-	}
+	return parser.parse(content)
 }
 
 let url = URL(string: "http://swiftfuncional.com/exercises/posts/1")!
 
-data(from: url, type: 1)
+data(from: url, parser: JSONParser())
