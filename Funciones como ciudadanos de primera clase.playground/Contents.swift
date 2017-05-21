@@ -16,3 +16,8 @@ func parseAsHTML(_ response: String) -> [String: AnyObject] {
 }
 
 parseAsJSON("{\"data\": 42}")
+
+func data(from url: URL) -> [String: AnyObject] {
+	let data = NSData(contentsOf: url)! as Data
+	let content = String(data: data, encoding: .utf8)
+}
